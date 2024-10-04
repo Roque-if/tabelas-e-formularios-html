@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário de Cadastro</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="date"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .checkbox-group, .radio-group {
+      margin-top: 5px;
+    }
+    .checkbox-group label,
+    .radio-group label {
+      display: inline-block;
+      margin-right: 10px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Formulário de Cadastro</h2>
+  <form action="#" method="POST" onsubmit="return validarFormulario()">
+
+    <!-- Campo Nome -->
+    <label for="nome">Nome Completo:</label>
+    <input type="text" id="nome" name="nome" required>
+
+    <!-- Campo E-mail -->
+    <label for="email">E-mail:</label>
+    <input type="email" id="email" name="email" required>
+
+    <!-- Campo Senha -->
+    <label for="senha">Senha:</label>
+    <input type="password" id="senha" name="senha" minlength="8" required>
+
+    <!-- Campo Data de Nascimento -->
+    <label for="dataNascimento">Data de Nascimento:</label>
+    <input type="date" id="dataNascimento" name="dataNascimento" required>
+
+    <!-- Campo Gênero -->
+    <label>Gênero:</label>
+    <div class="radio-group">
+      <label><input type="radio" name="genero" value="masculino" required> Masculino</label>
+      <label><input type="radio" name="genero" value="feminino"> Feminino</label>
+      <label><input type="radio" name="genero" value="outro"> Outro</label>
+    </div>
+
+    <!-- Campo Interesses -->
+    <label>Interesses:</label>
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="interesses" value="tecnologia"> Tecnologia</label>
+      <label><input type="checkbox" name="interesses" value="esportes"> Esportes</label>
+      <label><input type="checkbox" name="interesses" value="musica"> Música</label>
+      <label><input type="checkbox" name="interesses" value="arte"> Arte</label>
+    </div>
+
+    <!-- Campo Cidade -->
+    <label for="cidade">Cidade:</label>
+    <select id="cidade" name="cidade" required>
+      <option value="">Selecione sua cidade</option>
+      <option value="sao_paulo">São Paulo</option>
+      <option value="rio_de_janeiro">Rio de Janeiro</option>
+      <option value="belo_horizonte">Belo Horizonte</option>
+      <option value="porto_alegre">Porto Alegre</option>
+    </select>
+
+    <!-- Campo Quantidade de Produtos -->
+    <label for="quantidade">Quantidade de Produtos:</label>
+    <input type="number" id="quantidade" name="quantidade" min="1" required>
+
+    <!-- Campo Observações -->
+    <label for="observacoes">Observações Adicionais:</label>
+    <textarea id="observacoes" name="observacoes" rows="4"></textarea>
+
+    <!-- Botão de Envio -->
+    <button type="submit">Cadastrar</button>
+
+  </form>
+
+  <script>
+    function validarFormulario() {
+      const email = document.getElementById('email');
+      const senha = document.getElementById('senha');
+
+      // Validação de e-mail
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email.value)) {
+        alert('Por favor, insira um e-mail válido.');
+        return false;
+      }
+
+      // Validação de senha
+      if (senha.value.length < 8) {
+        alert('A senha deve ter no mínimo 8 caracteres.');
+        return false;
+      }
+
+      // Todas as validações passaram
+      return true;
+    }
+  </script>
+
+</body>
+</html>
